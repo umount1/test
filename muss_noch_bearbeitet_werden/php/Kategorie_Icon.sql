@@ -1,0 +1,16 @@
+update daten set icon='halfcircle_red.png' where event_type='Mathematik';
+update daten set icon='halfcircle_orange.png' where event_type='Physik';
+update daten set icon='halfcircle_green.png' where event_type='Biologie';
+update daten set icon='halfcircle_purple.png' where event_type='Chemie';
+update daten set icon='halfcircle_black.png' where event_type='Politik';
+update daten set icon='halfcircle_blue.png' where event_type='Technik';
+update daten set icon='halfcircle_gray.png' where event_type='Geschichte';
+update daten set icon='halfcircle_yellow.png' where event_type='Kunst';
+update daten set icon='star_green.png' where event_type='Naturereignis';
+update daten set icon='star_black.png' where event_type='Kunstepoche';
+update daten set icon='star_purple.png' where event_type='Geschichte Kriege';
+update daten set icon='star_white.png' where event_type='Erfindung';
+update daten set icon='star_red.png' where event_type='Mathematik Ereignis';
+update daten set icon='star_yellow.png' where event_type='Ereignis';
+update daten set icon='star_gray.png' where event_type='Bauwerk';
+update daten set icon='sym_goldstar.png' where event_type='Person';

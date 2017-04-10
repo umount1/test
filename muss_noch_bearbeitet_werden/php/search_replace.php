@@ -1,0 +1,162 @@
+<?php
+function multiexplode ($delimiters,$string) {   
+	$ready = str_replace($delimiters, $delimiters[0], $string);
+	$launch = explode($delimiters[0], $ready);
+	return  $launch;
+}
+	
+function search_and_replace($text){
+	$suche = array();
+	$suche[0] = "[[";
+	$suche[1] = "]]";
+	$suche[2] = " ";
+	$suche[3] = "&nbsp;&nbsp;";
+	$suche[4] = "&nbsp;";
+	$suche[5] = "geboren am";
+	$suche[6] = "gestorben am";
+	$suche[7] = ".";
+	$suche[8] = "Anfang";
+	$suche[9] = "um";
+	$suche[10] = "vermutlich ";
+	$suche[11] = "Januar";
+	$suche[12] = "Februar";
+	$suche[13] = "März";
+	$suche[14] = "April";
+	$suche[15] = "Mai ";
+	$suche[16] = "Juni";
+	$suche[17] = "Juli";
+	$suche[18] = "August";
+	$suche[19] = "September";
+	$suche[20] = "Oktober";
+	$suche[21] = "November";
+	$suche[22] = "Dezember";
+	$suche[23] = " -";
+	$suche[24] = "- ";
+//	$suche[25] = "* ";
+//	$suche[26] = "† ";
+	$suche[25] = "-8-";
+	$suche[26] = "-9-";	
+	$suche[27] = "-1-";
+	$suche[28] = "-2-";
+	$suche[29] = "-3-";
+	$suche[30] = "-4-";
+	$suche[31] = "-5-";
+	$suche[32] = "-6-";
+	$suche[33] = "-7-";
+//	$suche[34] = "-8-";
+//	$suche[35] = "-9-";
+ 	$suche[34] = "* ";
+//	$suche[35] = "† ";   
+	$suche[35] = " Jahrhundert";
+	$suche[36] = "nach";
+	$suche[37] = "vor";
+	$suche[38] = "v Chr";
+	$suche[39] = "getauft";
+	$suche[40] = "=";
+		
+	$ersetzen = array();
+	$ersetzen[0] = "";
+	$ersetzen[1] = "";
+	$ersetzen[2] = "&nbsp;";
+	$ersetzen[3] = "&nbsp;";
+	$ersetzen[4] = " ";
+	$ersetzen[5] = "*";
+	$ersetzen[6] = "†";
+	$ersetzen[7] = "";
+	$ersetzen[8] = "";
+	$ersetzen[9] = "";
+	$ersetzen[10] = "";
+	$ersetzen[11] = "-01-";
+	$ersetzen[12] = "-02-";
+	$ersetzen[13] = "-03-";
+	$ersetzen[14] = "-04-";
+	$ersetzen[15] = "-05- ";
+	$ersetzen[16] = "-06-";
+	$ersetzen[17] = "-07-";
+	$ersetzen[18] = "-08-";
+	$ersetzen[19] = "-09-";
+	$ersetzen[20] = "-10-";
+	$ersetzen[21] = "-11-";
+	$ersetzen[22] = "-12-";
+	$ersetzen[23] = "-";
+	$ersetzen[24] = "-";
+//	$ersetzen[25] = "* START-";
+//	$ersetzen[26] = "† ENDE-";
+	$ersetzen[25] = "-08-";
+	$ersetzen[26] = "-09-";
+	$ersetzen[27] = "-01-";
+	$ersetzen[28] = "-02-";
+	$ersetzen[29] = "-03-";
+	$ersetzen[30] = "-04-";
+	$ersetzen[31] = "-05-";
+	$ersetzen[32] = "-06-";
+	$ersetzen[33] = "-07-";
+//	$ersetzen[34] = "-08-";
+//	$ersetzen[35] = "-09-";
+	$ersetzen[34] = "* START-";
+//	$ersetzen[35] = "† ENDE-";
+	$ersetzen[35] = "00";	
+	$ersetzen[36] = "";
+	$ersetzen[37] = "";
+	$ersetzen[38] = "";
+	$ersetzen[39] = "";
+	$ersetzen[40] = "";
+	
+	$ausgabe = str_replace($suche, $ersetzen, $text);
+	//exit($ausgabe);
+	//$ausgabe = str_replace("† ", "† ENDE-", $ausgabe);
+	return $ausgabe;
+}
+
+function colorize($text){
+	$keyword = array();
+	$keyword[0] = '/([\d]{2}+[\-]+[\d]{2}+[\-]+[\d]{1,4})/';
+	$keyword[1] = '/START/';
+	$keyword[2] = '/ENDE/';
+	$keyword[3] = '/ v Chr /';
+	$keyword[4] = '/Mathematiker/';
+	$keyword[5] = '/Chemiker/';
+	$keyword[6] = '/Philosoph/';
+	$keyword[7] = '/Biologe/';
+	$keyword[8] = '/Universalgelehrter/';
+	$keyword[9] = '/Kartograph/';
+	$keyword[10] = '/Kartograf/';
+	$keyword[11] = '/Astronom/';
+	$keyword[12] = '/Astrologe/';
+	$keyword[13] = '/Pharmakologe/';
+	$keyword[14] = '/Mineraloge/';
+	$keyword[15] = '/Historiker/';
+	$keyword[16] = '/Polyhistor/';
+	$keyword[17] = '/Psychologe/';
+	$keyword[18] = '/Pädagoge/';
+	$keyword[19] = '/Physiker/';
+	$keyword[20] = '/Ingenieur/';
+	
+	$replace = array();
+	$replace[0] = "<r>$1</r>";
+	$replace[1] = '<g>START</g>';
+	$replace[2] = '<g>ENDE</g>';
+	$replace[3] = '<g> v Chr </g>';
+	$replace[4] = '<j>Mathematiker</j>';
+	$replace[5] = '<j>Chemiker</j>';
+	$replace[6] = '<j>Philosoph</j>';
+	$replace[7] = '<j>Biologe</j>';
+	$replace[8] = '<j>Universalgelehrter</j>';
+	$replace[9] = '<j>Kartograph</j>';
+	$replace[10] = '<j>Kartograf</j>';
+	$replace[11] = '<j>Astronom</j>';
+	$replace[12] = '<j>Astrologe</j>';
+	$replace[13] = '<j>Pharmakologe</j>';
+	$replace[14] = '<j>Mineraloge</j>';
+	$replace[15] = '<j>Historiker</j>';
+	$replace[16] = '<j>Polyhistor</j>';
+	$replace[17] = '<j>Psychologe</j>';
+	$replace[18] = '<j>Pädagoge</j>';
+	$replace[19] = '<j>Physiker</j>';
+	$replace[20] = '<j>Ingenieur</j>';
+	
+	$explode2 = preg_replace($keyword,$replace,$text);
+
+	return $explode2;
+}
+	?>
